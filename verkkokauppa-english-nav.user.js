@@ -8,7 +8,6 @@
 // @grant        none
 // @require      https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.0/lodash.min.js
-// @include      *
 // ==/UserScript==
 
 var common_things = [
