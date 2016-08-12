@@ -143,21 +143,25 @@ var categories = {
         'Äänikortit': 'Sound Cards'
     }],
     'Koti ja piha': ['Home and Garden', {
-        'Kastelu': 'Irrigation',
+        'Kodinhoito': 'Home maintainence',
         'Lamput ja valaisimet': 'Lamps and Lighting',
-        'Puutarha': 'Garden',
-        'Siivous ja kodinhoito': 'Cleany and Laundry',
+        'Piha ja puutarha': 'Yard and garden',
+        'Puutarhakoneet': 'Gardening equipment',
         'Sisustus': 'Decor',
-        'Sähkö ja elektroniikka': 'Electricity and Electronics'
+        'Sähkö ja elektroniikka': 'Electricity and Electronics',
+        'Turvallisuus': 'Safety and security'
     }],
     'Laukut ja matkailu': ['Bags and Travel', {
         'Festarivarustus': 'Festivals',
-        'Kannettaville tietokoneille': 'For notebooks',
+        'Kameroille': 'Cameras',
+        'Kannettaville tietokoneille': 'Notebooks',
         'Lapset': 'Children',
         'Lompakot ja kukkarot': 'Wallets and Purses',
+        'Matkailutarvikkeet': 'Travel accessories',
         'Matkalaukut': 'Travel Bags',
-        'Matkatekstiilit': 'Travel Gear and Accessories',
+        'Matkatekstiilit': 'Camping gear',
         'Muut': 'Other',
+        'Puhelimille': 'Phones',
         'Reput': 'Backpacks',
         'Sadesuojat': 'Waterproofs',
         'Soittimille': 'MP3 Players',
@@ -215,9 +219,10 @@ var categories = {
         'Sähköiset kirjat': 'E-Readers',
         'Tulostimet': 'Printers',
         'Ulkoiset kovalevyt': 'External Hard Drives',
-        'USB-muistit': 'USB Flash DRives',
+        'USB-muistit': 'USB Flash Drives',
         'Videoeditointi': 'Video Editing',
-        'Videoprosessorit/Skaalaimet': 'Video processors / Scalers',
+        'Videosignaalinkäsittely': 'Video signal processing',
+        'Videoprosessorit/Skaalaimet': 'Video processors / scalers',
         'Virransyöttö': 'Power Supplies',
         'Web-kamerat': 'Webcams'
     }],
@@ -225,7 +230,8 @@ var categories = {
         'Aktivointikortit': 'Activation Cards',
         'Kuvat ja video': 'Images and video',
         'Musiikki': 'Music',
-        'Opiskelijoille': 'For Studens',
+        'Opetusohjelmat': 'Educational software',
+        'Opiskelijoille': 'For Students',
         'Tietoturva': 'Security',
         'Toimisto': 'Office',
         'Työkalut ja käyttöjärjestelmät': 'Tools and Utilities',
@@ -233,13 +239,14 @@ var categories = {
         'Volyymilisenssit': 'Volume Licences'
     }],
     'Pelit ja viihde': ['Games and Entertainment', {
-        'Elokuvat': 'Movies',
         'Oheistuotteet': 'Related Products',
+        'Pelifiguurit': 'Game figurines',
         'Pelikonsolit ja tarvikkeet': 'Game Consoles and Accessories',
         'Peliohjaimet': 'Game Controllers',
         'Pelit 3DS':  '3DS Games',
         'Pelit DS': 'DS Games',
         'Pelit Mac': 'Mac Games',
+        'Pelit Nintendo NX': 'Nintendo NX Games',
         'Pelit PC': 'PC Games',
         'Pelit PS Vita': 'PS Vita Games',
         'Pelit PS2': 'PS2 Games',
@@ -249,7 +256,8 @@ var categories = {
         'Pelit Wii': 'Wii Games',
         'Pelit Wii U': 'Wii U Games',
         'Pelit Xbox 360': 'Xbox 360 Games',
-        'Pelit Xbox One': 'Xbox One Games'
+        'Pelit Xbox One': 'Xbox One Games',
+        'Pelituolit ja rattitelineet': 'Gaming chairs and steering wheel stands'
     }],
     'Pienkoneet': ['Small Appliances', {
         'Hiilihapotuslaitteet': 'Carbonators',
@@ -288,6 +296,7 @@ var categories = {
     }],
     'Tarvike/toimisto': ['Office Supplies', {
         'Arkistointi ja säilytys': 'Filing and Storage',
+        'Askartelutarvikkeet': 'Craft supplies',
         'Ergonomia': 'Ergonomics',
         'Hiirimatot': 'Mouse Mats',
         'Kirjoitus- ja esitystaulut': 'Writing- and Whiteboards',
@@ -332,6 +341,8 @@ var categories = {
         'Liimat ja teipit': 'Adhesives and Tapes',
         'Moottorisahat': 'Chainsaws',
         'Painepesurit ja imurit': 'Pressure Washers and Vacuum Cleaners',
+        'Puutarhakoneet': 'Garden equipment',
+        'Suojaimet': 'Protective equipment',
         'Sähkötyökalut': 'Power Tools',
         'Säilytys ja työpöydät': 'Storage and Desks',
         'Terät ja tarvikkeet': 'Blades and Accessories',
@@ -342,6 +353,7 @@ var categories = {
         'Kellot': 'Watchs',
         'Lisäravinteet': 'Nutritional Supplements',
         'Pyöräily': 'Cycling',
+        'Sähkökulkuneuvot': 'Sähkökulkuneuvot',
         'Ulkoilu ja retkeily': 'Outdoor Activities and Camping',
         'Urheiluelektroniikka': 'Sports Electronics'
     }],
