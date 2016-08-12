@@ -5,12 +5,13 @@
 // @description  Translates the navigation on verkkokauppa.com into English
 // @author       leblane
 // @match        *://www.verkkokauppa.com/*
-// @grant        none
+// @grant        unsafewindow
 // @require      https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.0/lodash.min.js
 // ==/UserScript==
 
 var common_things = [
+    ['#breadcrumbs-main-nav__categories > span', 'Home'],
     ['#mainNav > h2:nth-child(1)', 'PRODUCTS'],
     ['#mainNav > h2:nth-child(3)', 'SERVICES'],
     ['#QA-main-nav > label > a', 'Products'],
@@ -49,8 +50,11 @@ var common_things = [
     ['#default-filters-container > div.filter-options-container > nav > dl > dd > ul > li:nth-child(7) > a', 'Rating, best first'],
     ['#default-filters-container > div.filter-options-container > nav > dl > dd > ul > li:nth-child(8) > a', 'Reting, worst first'],
     ['#default-filters-container > div.filter-options-container > nav > dl > dd > ul > li:nth-child(9) > a', 'Newest'],
-    ['.vk-price-tag__title', 'Price']
-    
+    ['.vk-price-tag__title', 'Price'],
+    ['#QA-finder-browse > label > a', 'Product Areas'],
+    ['#QA-finder-brands > label > a', 'Brands'],
+    ['#QA-finder-qa > label > a', 'Questions &amp; Answers'],
+    ['#contentRight h2', 'Most Popular']
 ];
 
 var categories = {
@@ -434,9 +438,71 @@ $('#sideSearch-submit').val('Search Products');
 $('#searchTerms, #header-search > fieldset > label:nth-child(2) > input').attr('placeholder', 'Enter a keyword or part number');
 $('#mnp').attr('placeholder', 'Min price');
 $('#mxp').attr('placeholder', 'Max price');
+$('#categoryNav > p.count').html($('#categoryNav > p.count').html().replace('tuotetta', 'products'));
+
+/* Breadcrumbs / title */
+var $t = $('#categoryNav > h1');
+var title = $t.text();
+
+$mainCrumb = $('#categoryNav > div.breadcrumbs > span:nth-child(2) > a > span');
+if($mainCrumb.text() in categories) {
+    $mainCrumb.html($mainCrumb.html().replace($mainCrumb.text(), categories[$mainCrumb.text()][0]));
+}
+
+if(title in categories) {
+    $t.html($t.html().replace(title, categories[title][0]));
+    
+    /* Can easily fix a bunch of tags too */
+    $('#QA-finder-browse > div > div > a').each(function(index, e) {
+        var $e = $(e);
+        if($e.text() in categories[title][1]) {
+            $e.html($e.html().replace($e.text(), categories[title][1][$e.text()]));
+        }
+    });
+} else {
+    _.each(categories, function(subcategories, key) {
+        _.each(subcategories[1], function(subcategory, subkey) {
+            if(subkey == title) {
+                $t.html($t.html().replace(title, subcategory));
+                $subCrumb = $('#categoryNav > div.breadcrumbs > span:nth-child(3) > a > span');
+                if($subCrumb.text() == subkey) {
+                    $subCrumb.html($subCrumb.html().replace(subkey, subcategory));
+                }
+            }
+        });
+    });
+}
+
 
 $('.vk-product-row__meta .vk-label').each(function(index, e) {
-    console.log(e);
     var $e = $(e);
     $(e).html($e.html().replace('Tuote', 'Product'));
 });
+
+function afterReccomendations() {
+    $('.recommendation h2').html('Recommended Products');
+    var sections = $('#contentPage .products.grid_7 h2');
+    $(sections[0]).html('Most Popular');
+    $(sections[1]).html('New Arrivals');
+}
+
+/* Stuff to run after Angular has done its stuff */
+function afterAngular() {
+    /* This is pretty horrible, there's probably a better way to work around angular changing everything */
+    if($('#contentPage').length > 0) {
+        var recWatcher = setInterval(function () {
+            if ($('.recommendation.recommendation--top .thumbnails').length > 0) {
+                clearInterval(recWatcher);
+                afterReccomendations();
+            }
+        }, 100);
+    }
+}
+
+/* Wait for angular to finish */
+var initWatcher = setInterval(function () {
+    if (unsafeWindow.angular) {
+        clearInterval(initWatcher);
+        afterAngular();
+    }
+}, 100);
